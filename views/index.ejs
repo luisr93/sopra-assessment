@@ -1,0 +1,58 @@
+<!doctype html>
+<head>
+  <title>Clients & Policies</title>
+</head>
+<body>
+
+
+  <form action="/client" method="get">                          <!-- form to define which search will be used -->
+
+    <p>Enter Your User ID</p>
+    <input type="text" name="user_id">
+    <p>Search</p>
+
+    <select id="select">
+      <option value="1" selected>User Data By ID</option>
+      <option value="2">User Data By User Name</option>
+      <option value="3">Policies By User name</option>
+      <option value="4">User By Policy Number</option>
+    </select>
+
+    <p id="content">Enter the ID</p>
+    <input id="input" type="text" name="id">
+    <input type="submit" value="Submit">
+
+
+  </form>
+
+
+  <!-- script to change the name of the last input so it's name works for all the queries -->
+<script>
+  var sel = document.getElementById("select");
+  var input = document.getElementById("input");
+  var p = document.getElementById("content")
+  var form = document.querySelector("form");
+  sel.addEventListener("change", function(){
+    if (this.value==1) {
+      input.name = "id";
+      p.innerText = "Enter the ID";
+      form.action = "/client";
+    }
+    if (this.value==2){
+      input.name = "user_name";
+      p.innerText = "Enter the User Name";
+      form.action = "/client";
+    }
+    if (this.value==3){
+      input.name = "user_name";
+      p.innerText = "Enter the User Name";
+      form.action = "/policy";
+    }
+    if (this.value==4){
+      input.name ="policy_number";
+      p.innerText = "Enter the Policy Number";
+      form.action = "/policy";
+    }
+  });
+</script>
+</body>
